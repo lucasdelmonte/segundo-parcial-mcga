@@ -1,0 +1,14 @@
+.container-leftbar {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  background-color: crimson;
+  width: 20%;
+  padding: 10px 20px;
+}
+
+a {
+  text-decoration: none;
+  margin: 20px 0px;
+  font-size: 18px;
+}

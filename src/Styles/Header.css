@@ -1,0 +1,7 @@
+.container-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blueviolet;
+  height: 80px;
+}

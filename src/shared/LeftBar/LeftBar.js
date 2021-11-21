@@ -1,11 +1,11 @@
 import React from 'react';
-import '../../Styles/LeftBar.css';
 import { Link } from 'react-router-dom';
+import styles from '../LeftBar/LeftBar.module.css';
 
 const LeftBar = (props) => {
   return (
     <>
-      <div class="container-leftbar">
+      <div className={styles.containerLeftbar}>
         <Link to="/home">Home</Link>
         <Link to="providers">Providers</Link>
         <Link to="products">Products</Link>

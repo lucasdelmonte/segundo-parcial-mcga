@@ -1,9 +1,10 @@
 import React from 'react';
-import '../../Styles/Section.css';
+import styles from '../Section/Section.module.css';
+
 const Section = ({ container }) => {
   return (
     <>
-      <div class="container-section">{container}</div>
+      <div className={styles.containerSection}>{container}</div>
     </>
   );
 };

@@ -53,7 +53,9 @@ export const ProviderForm = (props) => {
         onChange={(e) => setLocation(e.target.value)}
         value={location}
       />
-      <button type="submit">Confirm</button>
+      <button className="btn btn-success" type="submit">
+        Confirm
+      </button>
     </form>
   );
 };

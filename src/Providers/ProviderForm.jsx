@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { creatorAddProvider } from '../redux/actions/providersActions';
 
 export const ProviderForm = (props) => {
-  const { onSubmitForm, provider } = props;
+  // const { onSubmitForm, provider } = props;
+  const dispatch = useDispatch();
+  const { type, provider } = props;
   const [name, setName] = useState(provider ? provider.name : '');
   const [telephone, setTelephone] = useState(
     provider ? provider.telephone : ''
@@ -10,12 +14,11 @@ export const ProviderForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmitForm({
-      id: provider ? provider.id : undefined,
-      name,
-      telephone,
-      location
-    });
+    if (type === 'add') {
+      const provider = { name, telephone, location };
+      const action = creatorAddProvider(provider);
+      dispatch(action);
+    }
     setName('');
     setTelephone('');
     setLocation('');
@@ -38,7 +41,7 @@ export const ProviderForm = (props) => {
         value={name}
       />
       <input
-        type="text"
+        type="number"
         name="telephone"
         placeholder="Telephone"
         className="form-control mb-3"
@@ -46,7 +49,7 @@ export const ProviderForm = (props) => {
         value={telephone}
       />
       <input
-        type="number"
+        type="text"
         name="location"
         placeholder="Location"
         className="form-control mb-3"

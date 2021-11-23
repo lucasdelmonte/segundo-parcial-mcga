@@ -20,6 +20,7 @@ const initialState = {
     }
   ],
   isLoading: false,
+  selectedProvider: null,
   error: ''
 };
 

@@ -3,8 +3,11 @@ import { providers as initalProviders } from '../mocks/providers.json';
 import { Header } from './Header';
 import { ProvidersList } from './ProviderList';
 import { v4 as uuidv4 } from 'uuid';
+import { useSelector } from 'react-redux';
 
 function Providers() {
+  const list = useSelector((state) => state.list);
+  console.log(list);
   const [showForm, setShowForm] = useState({ show: false, mode: 'Add' });
   const [providers, setproviders] = useState(initalProviders);
   const [providerToEdit, setProviderToEdit] = useState(undefined);
@@ -41,7 +44,7 @@ function Providers() {
         providerToEdit={providerToEdit}
       />
       <ProvidersList
-        providerList={providers}
+        providerList={list}
         onDelete={handleDeleteProvider}
         onEdit={handleEditClick}
       />

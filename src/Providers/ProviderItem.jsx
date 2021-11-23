@@ -1,8 +1,21 @@
 import React from 'react';
-import { FaTrash as DeleteIcon, FaPen as EditIcon } from 'react-icons/fa';
+import {
+  FaTrash as DeleteIcon,
+  FaPen as EditIcon,
+  FaHandHolding
+} from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { creatorRemoveProvider } from '../redux/actions/providersActions';
 
 export const ProviderItem = (props) => {
-  const { providerToShow, onDelete, onEdit } = props;
+  const dispatch = useDispatch();
+  const { providerToShow, onEdit } = props;
+
+  const handleDelete = (id) => {
+    const action = creatorRemoveProvider(providerToShow.id);
+    dispatch(action);
+  };
+
   return (
     <div className="border border-secondary my-2">
       <p>Name: {providerToShow.name}</p>
@@ -12,10 +25,7 @@ export const ProviderItem = (props) => {
         onClick={() => onEdit(providerToShow)}
         style={{ cursor: 'pointer', color: 'red' }}
       />
-      <DeleteIcon
-        onClick={() => onDelete(providerToShow.id)}
-        style={{ cursor: 'pointer' }}
-      />
+      <DeleteIcon onClick={handleDelete} style={{ cursor: 'pointer' }} />
     </div>
   );
 };

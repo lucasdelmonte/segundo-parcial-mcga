@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { creatorAddProvider } from '../redux/actions/providersActions';
+import {
+  creatorAddProvider,
+  creatorEditProvider
+} from '../redux/actions/providersActions';
 
 export const ProviderForm = (props) => {
-  // const { onSubmitForm, provider } = props;
   const dispatch = useDispatch();
   const { type, provider } = props;
   const [name, setName] = useState(provider ? provider.name : '');
@@ -17,6 +19,11 @@ export const ProviderForm = (props) => {
     if (type === 'add') {
       const provider = { name, telephone, location };
       const action = creatorAddProvider(provider);
+      dispatch(action);
+    }
+    if (type === 'edit') {
+      const payloadProvider = { id: provider.id, name, telephone, location };
+      const action = creatorEditProvider(payloadProvider);
       dispatch(action);
     }
     setName('');

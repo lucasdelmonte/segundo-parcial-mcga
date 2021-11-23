@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { providers as initalProviders } from '../mocks/providers.json';
 import { Header } from './Header';
 import { ProvidersList } from './ProviderList';
@@ -6,11 +6,16 @@ import { v4 as uuidv4 } from 'uuid';
 import { useSelector } from 'react-redux';
 
 function Providers() {
-  const list = useSelector((state) => state.list);
-  console.log(list);
+  const { list, providerSelected } = useSelector((state) => state.providers);
   const [showForm, setShowForm] = useState({ show: false, mode: 'Add' });
   const [providers, setproviders] = useState(initalProviders);
   const [providerToEdit, setProviderToEdit] = useState(undefined);
+
+  useEffect(() => {
+    if (providerSelected) {
+      setShowForm({ show: true, mode: 'Edit' });
+    }
+  }, [providerSelected]);
 
   const handleEditClick = (provider) => {
     setProviderToEdit(provider);
@@ -35,7 +40,7 @@ function Providers() {
   };
 
   return (
-    <div className="m-3">
+    <div className='m-3'>
       <Header
         showProviderForm={showForm}
         setShowProviderForm={setShowForm}

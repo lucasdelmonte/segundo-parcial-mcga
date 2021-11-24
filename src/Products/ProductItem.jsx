@@ -4,24 +4,26 @@ import { useDispatch } from 'react-redux';
 import { creatorRemoveProduct } from '../redux/actions/productsActions';
 
 export const ProductItem = (props) => {
-  const dispatch = useDispatch();
-  const { productToShow, onEdit } = props;
+	const dispatch = useDispatch();
+	const { productToShow, onEdit } = props;
 
-  const handleDelete = (id) => {
-    const action = creatorRemoveProduct(productToShow.id);
-    dispatch(action);
-  };
+	const handleDelete = (id) => {
+		const action = creatorRemoveProduct(productToShow.id);
+		dispatch(action);
+	};
 
-  return (
-    <div className='border border-secondary my-2'>
-      <p>Name: {productToShow.name}</p>
-      <p>Description: {productToShow.description}</p>
-      <p>Price: {productToShow.price}</p>
-      <EditIcon
-        onClick={() => onEdit(productToShow)}
-        style={{ cursor: 'pointer', color: 'red' }}
-      />
-      <DeleteIcon onClick={handleDelete} style={{ cursor: 'pointer' }} />
-    </div>
-  );
+	return (
+		<tr>
+			<td>{productToShow.name}</td>
+			<td>{productToShow.description}</td>
+			<td>{productToShow.price}</td>
+			<td>
+				<EditIcon
+					onClick={() => onEdit(productToShow)}
+					style={{ cursor: 'pointer', color: 'red' }}
+				/>
+				<DeleteIcon onClick={handleDelete} style={{ cursor: 'pointer' }} />
+			</td>
+		</tr>
+	);
 };

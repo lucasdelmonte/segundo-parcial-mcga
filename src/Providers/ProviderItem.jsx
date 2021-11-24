@@ -1,8 +1,7 @@
 import React from 'react';
 import { FaTrash as DeleteIcon, FaPen as EditIcon } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { creatorRemoveProvider } from '../redux/actions/providersActions';
-import { providersReducer } from '../redux/reducers/providersReducer';
+import { creatorAsyncRemove } from '../redux/actions/providersActions';
 import styles from '../shared/Section/Section.module.css';
 
 export const ProviderItem = (props) => {
@@ -10,7 +9,7 @@ export const ProviderItem = (props) => {
   const { providerToShow, onEdit } = props;
 
   const handleDelete = (id) => {
-    const action = creatorRemoveProvider(providerToShow.id);
+    const action = creatorAsyncRemove(providerToShow.id);
     dispatch(action);
   };
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
-  creatorAddProvider,
-  creatorEditProvider
+  creatorAsyncAdd,
+  creatorAsyncEdit
 } from '../redux/actions/providersActions';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from 'react-bootstrap/Modal';
@@ -17,7 +17,6 @@ export const ProviderForm = (props) => {
   );
   const [lastName, setLastName] = useState(provider ? provider.lastName : '');
   const [email, setEmail] = useState(provider ? provider.email : '');
-
   const [phone, setPhone] = useState(provider ? provider.phone : '');
   const [show, setShow] = useState(false);
 
@@ -28,7 +27,7 @@ export const ProviderForm = (props) => {
     event.preventDefault();
     if (type === 'add') {
       const provider = { company, firstName, lastName, email, phone };
-      const action = creatorAddProvider(provider);
+      const action = creatorAsyncAdd(provider);
       dispatch(action);
     }
     if (type === 'edit') {
@@ -40,7 +39,7 @@ export const ProviderForm = (props) => {
         email,
         phone
       };
-      const action = creatorEditProvider(payloadProvider);
+      const action = creatorAsyncEdit(payloadProvider);
       dispatch(action);
     }
     setCompany('');

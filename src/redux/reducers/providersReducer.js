@@ -3,23 +3,10 @@ import {
   REMOVE_PROVIDER,
   EDIT_PROVIDER
 } from '../../constants/providersTypes';
+import providerMock from '../../mocks/providers.json';
 
 const initialState = {
-  list: [
-    {
-      id: '8v8d6s7s-1x3l-2j3j-9b2d-8xh2h34h5h5s',
-      name: 'Lucas Delmonte',
-      telephone: '3476390432',
-      location: 'Clason'
-    },
-    {
-      id: '7x82x7g7-8c5h-9b2d-2j3j-1c835f37d45e',
-      name: 'Luis Diaz',
-      telephone: '3476229421',
-      location: 'Totoras'
-    }
-  ],
-  isLoading: false,
+  list: providerMock.providers,
   selectedProvider: null,
   error: ''
 };

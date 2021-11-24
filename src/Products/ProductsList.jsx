@@ -4,11 +4,11 @@ import { ProductItem } from './ProductItem';
 export const ProductsList = (props) => {
   const { productList, onDelete, onEdit } = props;
   return (
-    <div className='table-responsive'>
+    <div className="table-responsive">
       <table>
         <thead>
           <tr>
-            <th>Name</th>
+            <th>First Name</th>
             <th>Description</th>
             <th>Price</th>
             <th>Brand</th>

@@ -16,6 +16,7 @@ export const ProductForm = (props) => {
     product ? product.description : ''
   );
   const [price, setPrice] = useState(product ? product.price : '');
+  const [brand, setBrand] = useState(product ? product.brand : '');
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -24,24 +25,32 @@ export const ProductForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (type === 'add') {
-      const product = { name, description, price };
+      const product = { name, description, price, brand };
       const action = creatorAddProduct(product);
       dispatch(action);
     }
     if (type === 'edit') {
-      const payloadProduct = { id: product.id, name, description, price };
+      const payloadProduct = {
+        id: product.id,
+        name,
+        description,
+        price,
+        brand
+      };
       const action = creatorEditProduct(payloadProduct);
       dispatch(action);
     }
     setName('');
     setDescription('');
     setPrice('');
+    setBrand('');
   };
 
   useEffect(() => {
     setName(product ? product.name : '');
     setDescription(product ? product.description : '');
     setPrice(product ? product.price : '');
+    setBrand(product ? product.brand : '');
   }, [product]);
 
   return (
@@ -82,6 +91,14 @@ export const ProductForm = (props) => {
               className='form-control mb-3'
               onChange={(e) => setPrice(e.target.value)}
               value={price}
+            />
+            <input
+              type='text'
+              name='brand'
+              placeholder='Brand'
+              className='form-control mb-3'
+              onChange={(e) => setBrand(e.target.value)}
+              value={brand}
             />
             <button className='btn btn-success' type='submit'>
               Confirm

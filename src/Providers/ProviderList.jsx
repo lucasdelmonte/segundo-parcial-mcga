@@ -9,7 +9,9 @@ export const ProvidersList = (props) => {
         <table>
           <thead>
             <tr>
-              <th>Name</th>
+              <th>Company</th>
+              <th>Last name</th>
+              <th>Fist name</th>
               <th>Telephone</th>
               <th>Location</th>
               <th>Options</th>

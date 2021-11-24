@@ -12,8 +12,8 @@ export const ProvidersList = (props) => {
               <th>Company</th>
               <th>Last name</th>
               <th>Fist name</th>
-              <th>Telephone</th>
-              <th>Location</th>
+              <th>Email</th>
+              <th>Phone</th>
               <th>Options</th>
             </tr>
           </thead>

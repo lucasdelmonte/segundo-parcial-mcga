@@ -7,6 +7,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from 'react-bootstrap/Modal';
 import { Button } from 'react-bootstrap';
+
 export const ProviderForm = (props) => {
   const dispatch = useDispatch();
   const { type, provider } = props;
@@ -16,8 +17,10 @@ export const ProviderForm = (props) => {
   );
   const [location, setLocation] = useState(provider ? provider.location : '');
   const [show, setShow] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (type === 'add') {

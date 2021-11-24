@@ -1,14 +1,14 @@
 import React from 'react';
 import { FaTrash as DeleteIcon, FaPen as EditIcon } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { creatorRemoveProduct } from '../redux/actions/productsActions';
+import { deleteAsyncCreator } from '../redux/actions/productsActions';
 
 export const ProductItem = (props) => {
   const dispatch = useDispatch();
   const { productToShow, onEdit } = props;
 
   const handleDelete = (id) => {
-    const action = creatorRemoveProduct(productToShow.id);
+    const action = deleteAsyncCreator(productToShow.id);
     dispatch(action);
   };
 

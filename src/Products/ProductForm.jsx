@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
-  creatorAddProduct,
+  addAsyncCreator,
   creatorEditProduct
 } from '../redux/actions/productsActions';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,7 +26,7 @@ export const ProductForm = (props) => {
     event.preventDefault();
     if (type === 'add') {
       const product = { name, description, price, brand };
-      const action = creatorAddProduct(product);
+      const action = addAsyncCreator(product);
       dispatch(action);
     }
     if (type === 'edit') {

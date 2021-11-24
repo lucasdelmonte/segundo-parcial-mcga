@@ -17,9 +17,11 @@ export const ProviderItem = (props) => {
   return (
     <>
       <tr>
-        <td>{providerToShow.name}</td>
-        <td>{providerToShow.telephone}</td>
-        <td>{providerToShow.location}</td>
+        <td>{providerToShow.company}</td>
+        <td>{providerToShow.firstName}</td>
+        <td>{providerToShow.lastName}</td>
+        <td>{providerToShow.email}</td>
+        <td>{providerToShow.phone}</td>
         <td>
           <EditIcon
             class={styles.edit}

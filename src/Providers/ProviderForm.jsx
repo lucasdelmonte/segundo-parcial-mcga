@@ -11,11 +11,14 @@ import { Button } from 'react-bootstrap';
 export const ProviderForm = (props) => {
   const dispatch = useDispatch();
   const { type, provider } = props;
-  const [name, setName] = useState(provider ? provider.name : '');
-  const [telephone, setTelephone] = useState(
-    provider ? provider.telephone : ''
+  const [company, setCompany] = useState(provider ? provider.company : '');
+  const [firstName, setFirstName] = useState(
+    provider ? provider.firtsName : ''
   );
-  const [location, setLocation] = useState(provider ? provider.location : '');
+  const [lastName, setLastName] = useState(provider ? provider.lastName : '');
+  const [email, setEmail] = useState(provider ? provider.email : '');
+
+  const [phone, setPhone] = useState(provider ? provider.phone : '');
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -24,23 +27,34 @@ export const ProviderForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (type === 'add') {
-      const provider = { name, telephone, location };
+      const provider = { company, firstName, lastName, email, phone };
       const action = creatorAddProvider(provider);
       dispatch(action);
     }
     if (type === 'edit') {
-      const payloadProvider = { id: provider.id, name, telephone, location };
+      const payloadProvider = {
+        id: provider.id,
+        company,
+        firstName,
+        lastName,
+        email,
+        phone
+      };
       const action = creatorEditProvider(payloadProvider);
       dispatch(action);
     }
-    setName('');
-    setTelephone('');
-    setLocation('');
+    setCompany('');
+    setFirstName('');
+    setLastName('');
+    setEmail('');
+    setPhone('');
   };
   useEffect(() => {
-    setName(provider ? provider.name : '');
-    setTelephone(provider ? provider.telephone : '');
-    setLocation(provider ? provider.location : '');
+    setCompany(provider ? provider.company : '');
+    setFirstName(provider ? provider.firtsName : '');
+    setLastName(provider ? provider.lastName : '');
+    setEmail(provider ? provider.email : '');
+    setPhone(provider ? provider.phone : '');
   }, [provider]);
   return (
     <>
@@ -59,27 +73,43 @@ export const ProviderForm = (props) => {
           <form onSubmit={handleSubmit} className="mt-3">
             <input
               type="text"
-              name="name"
-              placeholder="Name"
+              name="company"
+              placeholder="Company"
               className="form-control mb-3"
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-            />
-            <input
-              type="number"
-              name="telephone"
-              placeholder="Telephone"
-              className="form-control mb-3"
-              onChange={(e) => setTelephone(e.target.value)}
-              value={telephone}
+              onChange={(e) => setCompany(e.target.value)}
+              value={company}
             />
             <input
               type="text"
-              name="location"
-              placeholder="Location"
+              name="firstname"
+              placeholder="Firstname"
               className="form-control mb-3"
-              onChange={(e) => setLocation(e.target.value)}
-              value={location}
+              onChange={(e) => setFirstName(e.target.value)}
+              value={firstName}
+            />
+            <input
+              type="text"
+              name="lastname"
+              placeholder="Lastname"
+              className="form-control mb-3"
+              onChange={(e) => setLastName(e.target.value)}
+              value={lastName}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="form-control mb-3"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
+            <input
+              type="number"
+              name="phone"
+              placeholder="Phone"
+              className="form-control mb-3"
+              onChange={(e) => setPhone(e.target.value)}
+              value={phone}
             />
             <button className="btn btn-success" type="submit">
               Confirm

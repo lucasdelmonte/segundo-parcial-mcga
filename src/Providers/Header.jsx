@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AddProvider } from './AddProvider';
 import { EditProvider } from './EditProvider';
 
@@ -10,6 +10,7 @@ export const Header = (props) => {
     providerToEdit,
     onEditProvider
   } = props;
+
   return (
     <div>
       <h1>Providers</h1>
@@ -21,7 +22,6 @@ export const Header = (props) => {
       >
         {showProviderForm.show ? 'Cancel' : 'Add Provider'}
       </button>
-
       {showProviderForm.show ? (
         showProviderForm.mode === 'Add' ? (
           <AddProvider onAddProvider={onAddProvider} />

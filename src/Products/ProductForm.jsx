@@ -17,18 +17,13 @@ export const ProductForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (type === 'add') {
-      const producto = { name, description, price };
-      const action = creatorAddProduct(producto);
+      const product = { name, description, price };
+      const action = creatorAddProduct(product);
       dispatch(action);
     }
     if (type === 'edit') {
-      const producto = {
-        id: product.id,
-        name: name,
-        description: description,
-        price: price
-      };
-      const action = creatorEditProduct(producto);
+      const payloadProduct = { id: product.id, name, description, price };
+      const action = creatorEditProduct(payloadProduct);
       dispatch(action);
     }
     setName('');
@@ -68,7 +63,9 @@ export const ProductForm = (props) => {
         onChange={(e) => setPrice(e.target.value)}
         value={price}
       />
-      <button type='submit'>Confirm</button>
+      <button className='btn btn-success' type='submit'>
+        Confirm
+      </button>
     </form>
   );
 };

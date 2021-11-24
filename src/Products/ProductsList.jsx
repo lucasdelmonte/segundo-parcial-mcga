@@ -1,5 +1,5 @@
-import React from "react";
-import { ProductItem } from "./ProductItem";
+import React from 'react';
+import { ProductItem } from './ProductItem';
 
 export const ProductsList = (props) => {
   const { productList, onDelete, onEdit } = props;

@@ -5,17 +5,17 @@ import { ProductsList } from './ProductsList';
 import { v4 as uuidv4 } from 'uuid';
 import { useSelector } from 'react-redux';
 
-function App() {
-  const { list, productoSeleccionado } = useSelector((state) => state.products);
+function Product() {
+  const { list, productSelected } = useSelector((state) => state.products);
   const [showForm, setShowForm] = useState({ show: false, mode: 'Add' });
   const [products, setproducts] = useState(initalProducts);
   const [productToEdit, setProductToEdit] = useState(undefined);
 
   useEffect(() => {
-    if (productoSeleccionado) {
+    if (productSelected) {
       setShowForm({ show: true, mode: 'Edit' });
     }
-  }, [productoSeleccionado]);
+  }, [productSelected]);
 
   const handleEditClick = (product) => {
     setProductToEdit(product);
@@ -57,4 +57,4 @@ function App() {
   );
 }
 
-export default App;
+export default Product;

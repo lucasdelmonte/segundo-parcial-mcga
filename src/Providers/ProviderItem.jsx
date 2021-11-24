@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  FaTrash as DeleteIcon,
-  FaPen as EditIcon,
-  FaHandHolding
-} from 'react-icons/fa';
+import { FaTrash as DeleteIcon, FaPen as EditIcon } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { creatorRemoveProvider } from '../redux/actions/providersActions';
 import { providersReducer } from '../redux/reducers/providersReducer';

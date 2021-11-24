@@ -1,37 +1,28 @@
 import {
-  ELIMINAR_PRODUCTO,
-  AGREGAR_PRODUCTO,
-  EDITAR_PRODUCTO,
-  SELECCIONAR_PRODUCTO,
-} from "../../constants/prodcutsTypes";
-import { v4 as uuidv4 } from "uuid";
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
+  EDIT_PRODUCT
+} from '../../constants/productsTypes';
+import { v4 as uuidv4 } from 'uuid';
 
-export const eliminarProductoCreador = (productoId) => {
+export const creatorAddProduct = (product) => {
+  product.id = uuidv4();
+
   return {
-    type: ELIMINAR_PRODUCTO,
-    payload: productoId,
+    type: ADD_PRODUCT,
+    payload: product
+  };
+};
+export const creatorRemoveProduct = (productId) => {
+  return {
+    type: REMOVE_PRODUCT,
+    payload: productId
   };
 };
 
-export const agregarProductoCreador = (producto) => {
-  producto.id = uuidv4();
-
+export const creatorEditProduct = (product) => {
   return {
-    type: AGREGAR_PRODUCTO,
-    payload: producto,
-  };
-};
-
-export const editarProductoCreador = (producto) => {
-  return {
-    type: EDITAR_PRODUCTO,
-    payload: producto,
-  };
-};
-
-export const seleccionarProductoCreador = (producto) => {
-  return {
-    type: SELECCIONAR_PRODUCTO,
-    payload: producto,
+    type: EDIT_PRODUCT,
+    payload: product
   };
 };

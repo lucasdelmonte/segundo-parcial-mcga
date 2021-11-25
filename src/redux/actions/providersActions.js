@@ -45,7 +45,7 @@ export const creatorAsyncAdd = (provider) => {
         provider
       );
       if (res.status === 201) {
-        const action = creatorAddProvider(res.data);
+        const action = creatorAddProvider(res.data.dato);
         dispatch(action);
       }
     } catch (error) {}

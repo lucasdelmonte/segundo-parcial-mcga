@@ -1,9 +1,12 @@
-import { ADD_PRODUCT, REMOVE_PRODUCT, EDIT_PRODUCT } from '../../constants/productsTypes';
-
-import productMock from '../../mocks/products.json';
+import {
+	ADD_PRODUCT,
+	REMOVE_PRODUCT,
+	EDIT_PRODUCT,
+	GET_PRODUCTS,
+} from '../../constants/productsTypes';
 
 const initialState = {
-	list: productMock.products,
+	list: [],
 	isLoading: false,
 	error: '',
 };
@@ -26,6 +29,11 @@ export const productsReducer = (state = initialState, action) => {
 				list: state.list.map((product) =>
 					product.id === action.payload.id ? action.payload : product
 				),
+			};
+		case GET_PRODUCTS:
+			return {
+				...state,
+				list: action.payload,
 			};
 		default:
 			return state;

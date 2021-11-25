@@ -27,13 +27,12 @@ export const creatorEditProduct = (product) => {
 export const deleteAsyncCreator = (productId) => {
 	return async (dispatch) => {
 		try {
-			const respuesta = await axios.delete(
-				'https://abm-heroku-decastro-delmonte.herokuapp.com/api/products/619ec6d77c567df723e099fb'
+			const response = await axios.delete(
+				`https://abm-heroku-decastro-delmonte.herokuapp.com/api/products/${productId}`
 			);
-			console.log(respuesta);
-			if (respuesta.status === 202) {
+			console.log(response);
+			if (response.status === 202) {
 				const action = creatorRemoveProduct(productId);
-
 				dispatch(action);
 			}
 		} catch (error) {}
@@ -42,12 +41,13 @@ export const deleteAsyncCreator = (productId) => {
 export const addAsyncCreator = (product) => {
 	return async (dispatch) => {
 		try {
-			const respuesta = await axios.post(
+			const response = await axios.post(
 				'https://abm-heroku-decastro-delmonte.herokuapp.com/api/products',
 				product
 			);
-			if (respuesta.status === 201) {
-				const action = creatorAddProduct(respuesta.data);
+			console.log(response);
+			if (response.status === 201) {
+				const action = creatorAddProduct(response.data.dato);
 				dispatch(action);
 			}
 		} catch (error) {}
@@ -56,11 +56,11 @@ export const addAsyncCreator = (product) => {
 /*  export const obtenerProductosAsyncCreator = () => {
   return async (dispatch) => {
     try {
-      const respuesta = await axios.get(
+      const response = await axios.get(
         'https://abm-heroku-decastro-delmonte.herokuapp.com/api/products/all'
       );
-      if (respuesta.status === 200) {
-        const action = getProducts(respuesta.data);
+      if (response.status === 200) {
+        const action = getProducts(response.data);
         dispatch(action);
       }
     } catch (error) {}

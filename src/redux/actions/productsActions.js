@@ -70,11 +70,11 @@ export const editAsyncCreator = (productId) => {
 	return async (dispatch) => {
 		try {
 			const response = await axios.put(
-				`https://abm-heroku-decastro-delmonte.herokuapp.com/api/products/619f2763ceda44199bd60143`
+				`https://abm-heroku-decastro-delmonte.herokuapp.com/api/products//${productId}`
 			);
 			console.log(response);
-			if (response.status === 201) {
-				const action = creatorEditProduct(response.data.preview);
+			if (response.status === 200) {
+				const action = creatorEditProduct(response.data.update);
 				dispatch(action);
 			}
 		} catch (error) {}

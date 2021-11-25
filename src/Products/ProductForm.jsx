@@ -26,13 +26,13 @@ export const ProductForm = (props) => {
 		}
 		if (type === 'edit') {
 			const payloadProduct = {
-				id: product.id,
+				id: product._id,
 				name,
 				description,
 				price,
 				brand,
 			};
-			const action = editAsyncCreator(payloadProduct);
+			const action = editAsyncCreator(payloadProduct.id);
 			dispatch(action);
 		}
 		setName('');

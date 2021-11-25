@@ -2,13 +2,13 @@ import {
   ADD_PROVIDER,
   REMOVE_PROVIDER,
   EDIT_PROVIDER,
-  GET_ALL_PROVIDER
+  GET_PROVIDERS
 } from '../../constants/providersTypes';
-import { v4 as uuidv4 } from 'uuid';
+//import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
 export const creatorAddProvider = (provider) => {
-  provider.id = uuidv4();
+  //provider.id = uuidv4();
 
   return {
     type: ADD_PROVIDER,
@@ -29,13 +29,14 @@ export const creatorEditProvider = (provider) => {
   };
 };
 
-export const creatorGetAllProvider = (provider) => {
+export const creatorGetAllProviders = (providers) => {
   return {
-    type: GET_ALL_PROVIDER,
-    payload: provider
+    type: GET_PROVIDERS,
+    payload: providers
   };
 };
 
+// Anda
 export const creatorAsyncAdd = (provider) => {
   return async (dispatch) => {
     try {
@@ -43,37 +44,51 @@ export const creatorAsyncAdd = (provider) => {
         'https://abm-heroku-parcial.herokuapp.com/api/providers/',
         provider
       );
-      if (res.status === 202 || res.status === 202) {
-        const action = creatorAddProvider(provider);
+      if (res.status === 201) {
+        const action = creatorAddProvider(res.data);
         dispatch(action);
       }
     } catch (error) {}
   };
 };
-
+// Anda
 export const creatorAsyncRemove = (providerId) => {
   return async (dispatch) => {
     try {
       const res = await axios.delete(
-        'https://abm-heroku-parcial.herokuapp.com/api/providers/' + providerId
+        `https://abm-heroku-parcial.herokuapp.com/api/providers/${providerId}`
       );
-      if (res.status === 200 || res.status === 202) {
+      if (res.status === 202) {
         const action = creatorRemoveProvider(providerId);
         dispatch(action);
       }
     } catch (error) {}
   };
 };
-
+// Anda
+export const creatorAsyncGet = () => {
+  return async (dispatch) => {
+    try {
+      const res = await axios.get(
+        'https://abm-heroku-parcial.herokuapp.com/api/providers/all'
+      );
+      if (res.status === 200) {
+        const action = creatorGetAllProviders(res.data.data);
+        dispatch(action);
+      }
+    } catch (error) {}
+  };
+};
+// No anda
 export const creatorAsyncEdit = (provider) => {
   return async (dispatch) => {
     try {
       const res = await axios.put(
-        'https://abm-heroku-parcial.herokuapp.com/api/providers/619ec8939d9017ed17c4ef17'
+        'https://abm-heroku-parcial.herokuapp.com/api/providers/',
+        provider.id
       );
-      console.log(res);
-      if (res.status === 202 || res.status === 202) {
-        const action = creatorEditProvider(provider);
+      if (res.status === 200 || res.status === 202) {
+        const action = creatorEditProvider(res.data.preview);
         dispatch(action);
       }
     } catch (error) {}

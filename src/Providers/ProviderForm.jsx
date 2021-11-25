@@ -75,6 +75,7 @@ export const ProviderForm = (props) => {
               name="company"
               placeholder="Company"
               className="form-control mb-3"
+              required
               onChange={(e) => setCompany(e.target.value)}
               value={company}
             />
@@ -83,6 +84,7 @@ export const ProviderForm = (props) => {
               name="firstname"
               placeholder="Firstname"
               className="form-control mb-3"
+              required
               onChange={(e) => setFirstName(e.target.value)}
               value={firstName}
             />
@@ -91,6 +93,7 @@ export const ProviderForm = (props) => {
               name="lastname"
               placeholder="Lastname"
               className="form-control mb-3"
+              required
               onChange={(e) => setLastName(e.target.value)}
               value={lastName}
             />
@@ -99,6 +102,7 @@ export const ProviderForm = (props) => {
               name="email"
               placeholder="Email"
               className="form-control mb-3"
+              required
               onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
@@ -107,6 +111,7 @@ export const ProviderForm = (props) => {
               name="phone"
               placeholder="Phone"
               className="form-control mb-3"
+              required
               onChange={(e) => setPhone(e.target.value)}
               value={phone}
             />

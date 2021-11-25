@@ -1,7 +1,8 @@
 import {
   ADD_PROVIDER,
   REMOVE_PROVIDER,
-  EDIT_PROVIDER
+  EDIT_PROVIDER,
+  GET_PROVIDERS
 } from '../../constants/providersTypes';
 import providerMock from '../../mocks/providers.json';
 
@@ -29,6 +30,11 @@ export const providersReducer = (state = initialState, action) => {
         list: state.list.map((provider) =>
           provider.id === action.payload.id ? action.payload : provider
         )
+      };
+    case GET_PROVIDERS:
+      return {
+        ...state,
+        list: action.payload
       };
     default:
       return state;

@@ -13,7 +13,7 @@ export const ProviderForm = (props) => {
   const { type, provider } = props;
   const [company, setCompany] = useState(provider ? provider.company : '');
   const [firstName, setFirstName] = useState(
-    provider ? provider.firtsName : ''
+    provider ? provider.firstName : ''
   );
   const [lastName, setLastName] = useState(provider ? provider.lastName : '');
   const [email, setEmail] = useState(provider ? provider.email : '');
@@ -50,7 +50,7 @@ export const ProviderForm = (props) => {
   };
   useEffect(() => {
     setCompany(provider ? provider.company : '');
-    setFirstName(provider ? provider.firtsName : '');
+    setFirstName(provider ? provider.firstName : '');
     setLastName(provider ? provider.lastName : '');
     setEmail(provider ? provider.email : '');
     setPhone(provider ? provider.phone : '');

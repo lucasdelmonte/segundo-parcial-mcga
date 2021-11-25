@@ -7,9 +7,8 @@ import styles from '../shared/Section/Section.module.css';
 export const ProviderItem = (props) => {
   const dispatch = useDispatch();
   const { providerToShow, onEdit } = props;
-
   const handleDelete = (id) => {
-    const action = creatorAsyncRemove(providerToShow.id);
+    const action = creatorAsyncRemove(providerToShow._id);
     dispatch(action);
   };
 

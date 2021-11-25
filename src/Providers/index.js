@@ -3,19 +3,26 @@ import { providers as initalProviders } from '../mocks/providers.json';
 import { Header } from './Header';
 import { ProvidersList } from './ProviderList';
 import { v4 as uuidv4 } from 'uuid';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { creatorAsyncGet } from '../redux/actions/providersActions';
 
 function Providers() {
-  const { list, providerSelected } = useSelector((state) => state.providers);
   const [showForm, setShowForm] = useState({ show: false, mode: 'Add' });
   const [providers, setproviders] = useState(initalProviders);
   const [providerToEdit, setProviderToEdit] = useState(undefined);
+  const { providerSelected, list } = useSelector((state) => state.providers);
 
+  const dispatch = useDispatch();
   useEffect(() => {
     if (providerSelected) {
       setShowForm({ show: true, mode: 'Edit' });
     }
   }, [providerSelected]);
+
+  useEffect(() => {
+    dispatch(creatorAsyncGet());
+    return () => {};
+  }, []);
 
   const handleEditClick = (provider) => {
     setProviderToEdit(provider);

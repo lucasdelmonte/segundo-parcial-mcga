@@ -12,9 +12,7 @@ function Product() {
 	const [products, setproducts] = useState(initalProducts);
 	const [productToEdit, setProductToEdit] = useState(undefined);
 	const dispatch = useDispatch();
-	const { isLoading, actionInProgress, productSelected, list } = useSelector(
-		(state) => state.products
-	);
+	const { productSelected, list } = useSelector((state) => state.products);
 
 	useEffect(() => {
 		dispatch(getProductsAsyncCreator());

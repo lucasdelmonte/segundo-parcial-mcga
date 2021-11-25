@@ -21,7 +21,7 @@ export const productsReducer = (state = initialState, action) => {
 		case REMOVE_PRODUCT:
 			return {
 				...state,
-				list: state.list.filter((product) => product.id !== action.payload),
+				list: state.list.filter((product) => product._id !== action.payload),
 			};
 		case EDIT_PRODUCT:
 			return {

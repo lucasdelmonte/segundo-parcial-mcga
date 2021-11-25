@@ -40,7 +40,7 @@ export const deleteAsyncCreator = (productId) => {
 	return async (dispatch) => {
 		try {
 			const response = await axios.delete(
-				'https://abm-heroku-decastro-delmonte.herokuapp.com/api/products/' + productId
+				`https://abm-heroku-decastro-delmonte.herokuapp.com/api/products/${productId}`
 			);
 			console.log(response);
 			if (response.status === 202) {
@@ -60,6 +60,21 @@ export const addAsyncCreator = (product) => {
 			console.log(response);
 			if (response.status === 201) {
 				const action = creatorAddProduct(response.data.dato);
+				dispatch(action);
+			}
+		} catch (error) {}
+	};
+};
+
+export const editAsyncCreator = (productId) => {
+	return async (dispatch) => {
+		try {
+			const response = await axios.put(
+				`https://abm-heroku-decastro-delmonte.herokuapp.com/api/products/619f2763ceda44199bd60143`
+			);
+			console.log(response);
+			if (response.status === 201) {
+				const action = creatorEditProduct(response.data.preview);
 				dispatch(action);
 			}
 		} catch (error) {}
